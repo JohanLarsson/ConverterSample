@@ -1,0 +1,30 @@
+﻿using System.Windows.Media;
+
+namespace ConverterSample
+{
+    using System;
+    using System.Globalization;
+    using System.Windows.Data;
+
+    public class SomeIntToBrushConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+            {
+                return Brushes.Gainsboro;
+            }
+            var i = (int) value;
+            if (i <= 10)
+            {
+                return Brushes.Yellow;
+            }
+            return Brushes.Blue;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
